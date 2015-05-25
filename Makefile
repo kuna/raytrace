@@ -5,8 +5,11 @@ MAIN = cudaTest
 $(MAIN): cudaTest.cu pnglib.o
 	$(CC) $(CFLAGS) $(MAIN).cu pnglib.o -o $(MAIN)
 
+pnglibTest: pnglibTest.cpp pnglib.o
+	g++ pnglibTest.cpp pnglib.o -lpng -o pnglibTest
+
 pnglib.o: pnglib.cpp
-	g++ $(CFLAGS) -c pnglib.cpp
+	g++ -c pnglib.cpp -lpng
 
 clean:
 	rm -rf *.o
